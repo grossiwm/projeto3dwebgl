@@ -766,7 +766,402 @@ class MySphere extends Shape3d{
 }
 
 
-class Mouse{
+// class Mouse{
+
+//   constructor(program,gl,hipRotVec,headRotVec){
+//     this.program = program;
+//     this.gl = gl;
+//     this.cube = new MyCube(this.program,this.gl,undefined,"miojo.jpg");
+//     this.sphere = new MySphere(this.program,this.gl,1.0,64,64, new Color(1.0,0.0,0.0),"miojo.jpg");
+//     this.cylinder = new MyCylinder(this.program,this.gl,2.0,4.0,32,32,new Color(0.8,0.4,0.0),"miojo.jpg");
+//     this.sphere2 = new MySphere(this.program,this.gl,1.0,32,32,new Color(0.0,0.0,0.5),"miojo.jpg");
+//     this._hipRotationVector = hipRotVec;
+//     this._headRotationVector = headRotVec;
+//   }
+
+//   get hipRotationVector(){return this._hipRotationVector;}
+
+//   set hipRotationVector(hipRotVec){this._hipRotationVector = hipRotVec;}
+
+//   get headRotationVector(){return this._headRotationVector;}
+
+//   set headRotationVector(hipRotVec){this._headRotationVector = hipRotVec;}
+
+
+//   drawHead(modelViewMatrix){
+//     myMatrixStack.push(mat4.clone(modelViewMatrix));  
+//       var tv = vec3.create();
+//       vec3.set(tv, 0.0, 1.0, 1.5);
+//       mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+//       mat4.rotateX(modelViewMatrix,modelViewMatrix, this._headRotationVector[0] * Math.PI / 180);
+//       mat4.rotateY(modelViewMatrix,modelViewMatrix, this._headRotationVector[1] * Math.PI / 180);
+//       mat4.rotateZ(modelViewMatrix,modelViewMatrix, this._headRotationVector[2] * Math.PI / 180);
+
+//       //Empilhar a matriz corrente
+//       myMatrixStack.push(mat4.clone(modelViewMatrix));
+//         //Transforma localmente o primeiro cubo.  
+//         var tv = vec3.create();
+//         vec3.set(tv, -1.5, 2.0, 0.0);
+//         mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+//         mat4.rotateY(modelViewMatrix,modelViewMatrix, 45.0 * Math.PI / 180);
+//         var s = vec3.create();
+//         vec3.set(s,0.5,0.7,0.1);
+//         mat4.scale(modelViewMatrix,modelViewMatrix,s)
+//         setProgramMatrices(this.program,modelViewMatrix);
+//         this.cylinder.draw(renderingMode);
+//       modelViewMatrix = myMatrixStack.pop();
+
+//       myMatrixStack.push(mat4.clone(modelViewMatrix));  
+//         var tv = vec3.create();
+//         vec3.set(tv, 1.5, 2.0, 0.0);
+//         mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+//         mat4.rotateY(modelViewMatrix,modelViewMatrix, -45.0 * Math.PI / 180);
+//         var s = vec3.create();
+//         vec3.set(s,0.5,0.7,0.1);
+//         mat4.scale(modelViewMatrix,modelViewMatrix,s)
+//         setProgramMatrices(this.program,modelViewMatrix);
+//         this.cylinder.draw(renderingMode);
+//       modelViewMatrix = myMatrixStack.pop();
+      
+      
+//       myMatrixStack.push(mat4.clone(modelViewMatrix));  
+//       setProgramMatrices(this.program,modelViewMatrix);
+//         this.cube.draw(renderingMode);
+//       modelViewMatrix = myMatrixStack.pop();     
+    
+
+//       myMatrixStack.push(mat4.clone(modelViewMatrix));  
+//         var tv = vec3.create();
+//         vec3.set(tv, 0.0, 0.0, 1.0);
+//         mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+//         setProgramMatrices(this.program,modelViewMatrix);
+//         this.sphere2.draw(renderingMode);
+//       modelViewMatrix = myMatrixStack.pop();
+
+//     modelViewMatrix = myMatrixStack.pop();
+    
+//     return modelViewMatrix;
+    
+//   }
+
+//   drawBody(modelViewMatrix){
+//     myMatrixStack.push(mat4.clone(modelViewMatrix));  
+//       var tv = vec3.create();
+//       //vec3.set(tv, 0.0, 0.0, 0.0);
+//       //mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+//       var s = vec3.create();
+//       vec3.set(s,2.0,2.0,2.0);
+//       mat4.scale(modelViewMatrix,modelViewMatrix,s)
+//       setProgramMatrices(this.program,modelViewMatrix);
+//       this.sphere.draw(renderingMode);
+//     modelViewMatrix = myMatrixStack.pop(); 
+
+//     myMatrixStack.push(mat4.clone(modelViewMatrix));  
+//       //var tv = vec3.create();
+//       //vec3.set(tv, 0.0, 0.0, 0.0);
+//       //mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+//       setProgramMatrices(this.program,modelViewMatrix);
+//       this.cylinder.draw(renderingMode);
+//     modelViewMatrix = myMatrixStack.pop(); 
+
+
+//     var tv = vec3.create();
+//     vec3.set(tv, 0.0, 0.0, 4.0);
+//     mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+//     myMatrixStack.push(mat4.clone(modelViewMatrix));  
+//       var s = vec3.create();
+//       vec3.set(s,2.0,2.0,2.0);
+//       mat4.scale(modelViewMatrix,modelViewMatrix,s)
+//       setProgramMatrices(this.program,modelViewMatrix);
+//       this.sphere.draw(renderingMode);
+//     modelViewMatrix = myMatrixStack.pop(); 
+
+//     modelViewMatrix = this.drawRightFrontLeg(modelViewMatrix);
+//     modelViewMatrix = this.drawLeftFrontLeg(modelViewMatrix);
+
+//     myMatrixStack.push(mat4.clone(modelViewMatrix));  
+//       var tv = vec3.create();
+//       vec3.set(tv, 0.0, 0.0, 0.25);
+//       mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+//       this.drawHead(modelViewMatrix);
+//     modelViewMatrix = myMatrixStack.pop(); 
+    
+
+//     return modelViewMatrix;
+
+//   }
+
+//   drawLeg(modelViewMatrix){
+//     myMatrixStack.push(mat4.clone(modelViewMatrix));  
+//       var tv = vec3.create();
+//       vec3.set(tv, 0.0, 0.0, 0.0);
+//       mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+//       myMatrixStack.push(mat4.clone(modelViewMatrix));
+//         var s = vec3.create();
+//         vec3.set(s,0.5,1.5,1.0);
+//         mat4.scale(modelViewMatrix,modelViewMatrix,s)
+//         gl.uniformMatrix4fv(program.uModelViewMatrix, false, modelViewMatrix);
+//         this.sphere.draw(renderingMode);
+//       modelViewMatrix = myMatrixStack.pop(); 
+      
+//       /*draw foreleg*/
+      
+//       vec3.set(tv, 0.0,-1.0, 0.0);
+//       mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+//       mat4.rotateX(modelViewMatrix,modelViewMatrix, 45.0 * Math.PI / 180);
+//       myMatrixStack.push(mat4.clone(modelViewMatrix));
+//         var s = vec3.create();
+//         vec3.set(s,0.25,0.25,0.5);
+//         mat4.scale(modelViewMatrix,modelViewMatrix,s)
+//         gl.uniformMatrix4fv(program.uModelViewMatrix, false, modelViewMatrix);
+//         this.cylinder.draw(renderingMode);
+//       modelViewMatrix = myMatrixStack.pop();
+
+//       /*draw paw*/
+
+//       vec3.set(tv, 0.0,0.0,2.5);
+//       mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+//       mat4.rotateX(modelViewMatrix,modelViewMatrix, -45.0 * Math.PI / 180);
+//       var s = vec3.create();
+//       vec3.set(s,0.5,0.5,0.5);
+//       mat4.scale(modelViewMatrix,modelViewMatrix,s)
+//       gl.uniformMatrix4fv(program.uModelViewMatrix, false, modelViewMatrix);
+//       this.cube.draw(renderingMode);
+
+//     modelViewMatrix = myMatrixStack.pop();  
+
+//     return modelViewMatrix;
+
+
+//   }
+
+//   drawRightBackLeg(modelViewMatrix){
+//     myMatrixStack.push(mat4.clone(modelViewMatrix));  
+//       var tv = vec3.create();
+//       vec3.set(tv, -2.0, 0.0, 0.0);
+//       mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+//       var s = vec3.create();
+//       vec3.set(s,1.1,1.1,1.1);
+//       mat4.scale(modelViewMatrix,modelViewMatrix,s)
+//       setProgramMatrices(this.program,modelViewMatrix);
+//       modelViewMatrix = this.drawLeg(modelViewMatrix);
+//     modelViewMatrix = myMatrixStack.pop(); 
+
+//     return modelViewMatrix;
+
+//   }
+  
+//   drawLeftBackLeg(modelViewMatrix){
+//     myMatrixStack.push(mat4.clone(modelViewMatrix));  
+//       var tv = vec3.create();
+//       vec3.set(tv, 2.0, 0.0, 0.0);
+//       mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+//       var s = vec3.create();
+//       vec3.set(s,1.1,1.1,1.1);
+//       mat4.scale(modelViewMatrix,modelViewMatrix,s)
+//       setProgramMatrices(this.program,modelViewMatrix);
+//       modelViewMatrix = this.drawLeg(modelViewMatrix);
+//     modelViewMatrix = myMatrixStack.pop(); 
+
+//     return modelViewMatrix;
+//   }
+
+//   drawRightFrontLeg(modelViewMatrix){
+//     myMatrixStack.push(mat4.clone(modelViewMatrix));  
+//       var tv = vec3.create();
+//       vec3.set(tv, -2.0, -0.25, 0.0);
+//       mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+//       setProgramMatrices(this.program,modelViewMatrix);
+//       modelViewMatrix = this.drawLeg(modelViewMatrix);
+//     modelViewMatrix = myMatrixStack.pop(); 
+//     return modelViewMatrix;
+    
+//   }
+  
+//   drawLeftFrontLeg(modelViewMatrix){
+//     myMatrixStack.push(mat4.clone(modelViewMatrix));  
+//       var tv = vec3.create();
+//       vec3.set(tv, 2.0, -0.25, 0.0);
+//       mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+//       setProgramMatrices(this.program,modelViewMatrix);
+//       modelViewMatrix = this.drawLeg(modelViewMatrix);
+//     modelViewMatrix = myMatrixStack.pop(); 
+//     return modelViewMatrix;
+//   }
+
+
+//   draw(modelViewMatrix){
+//     myMatrixStack.push(mat4.clone(modelViewMatrix));
+//       mat4.rotateX(modelViewMatrix,modelViewMatrix, this._hipRotationVector[0] * Math.PI / 180);
+//       mat4.rotateY(modelViewMatrix,modelViewMatrix, this._hipRotationVector[1] * Math.PI / 180);
+//       mat4.rotateZ(modelViewMatrix,modelViewMatrix, this._hipRotationVector[2] * Math.PI / 180);
+//       modelViewMatrix = this.drawBody(modelViewMatrix);
+//     modelViewMatrix = myMatrixStack.pop(); 
+//     modelViewMatrix = this.drawRightBackLeg(modelViewMatrix);
+//     modelViewMatrix = this.drawLeftBackLeg(modelViewMatrix);
+//     return modelViewMatrix;
+//   }
+
+// }
+
+
+class NoodlesBoy {
+
+  constructor(program, gl) {
+    this.program = program;
+    this.gl = gl;
+    this.upperBody = new MyCylinder(this.program,this.gl,2.0,2.5,32,32,new Color(0.8,0.4,0.0),"miojo.jpg");
+    this.head = new MySphere(this.program,this.gl,1.5,64,64, new Color(1.0,0.0,0.0),"miojo.jpg");
+    this.leftArm = new MyCylinder(this.program,this.gl,2.0,1.5,32,32,new Color(0.8,0.4,0.0),"miojo.jpg");
+    this.rightArm = new MyCylinder(this.program,this.gl,2.0,1.5,32,32,new Color(0.8,0.4,0.0),"miojo.jpg");
+    this.leftLeg = new MyCylinder(this.program,this.gl,2.0,1.5,32,32,new Color(0.8,0.4,0.0),"miojo.jpg");
+    this.rightLeg = new MyCylinder(this.program,this.gl,2.0,1.5,32,32,new Color(0.8,0.4,0.0),"miojo.jpg");
+    this.rightForeArm = new MyCylinder(this.program,this.gl,2.0,1.5,32,32,new Color(0.8,0.4,0.0),"miojo.jpg");
+    this.leftForeArm = new MyCylinder(this.program,this.gl,2.0,1.5,32,32,new Color(0.8,0.4,0.0),"miojo.jpg");
+    this.rightForeLeg = new MyCylinder(this.program,this.gl,2.0,1.5,32,32,new Color(0.8,0.4,0.0),"miojo.jpg");
+    this.leftForeLeg = new MyCylinder(this.program,this.gl,2.0,1.5,32,32,new Color(0.8,0.4,0.0),"miojo.jpg");
+    
+  }
+
+  drawBody(modelViewMatrix) {
+
+    myMatrixStack.push(mat4.clone(modelViewMatrix));
+    var tv = vec3.create();
+    vec3.set(tv, 1, 5, 0);
+    mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+    setProgramMatrices(this.program,modelViewMatrix);
+    this.head.draw(renderingMode);
+    modelViewMatrix = myMatrixStack.pop();
+
+    myMatrixStack.push(mat4.clone(modelViewMatrix));
+    var tv = vec3.create();
+    vec3.set(tv, 1.0, -1.0, 0.0);
+    mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+    mat4.rotateX(modelViewMatrix,modelViewMatrix, -90.0 * Math.PI / 180);
+    var s = vec3.create();
+    vec3.set(s,0.25,0.25,2.0);
+    mat4.scale(modelViewMatrix,modelViewMatrix,s)
+    setProgramMatrices(program,modelViewMatrix);
+    this.upperBody.draw(renderingMode);
+    modelViewMatrix = myMatrixStack.pop();
+
+    myMatrixStack.push(mat4.clone(modelViewMatrix));
+    var tv = vec3.create();
+    vec3.set(tv, 1, 3.0, 0.0);
+    mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+    mat4.rotateX(modelViewMatrix,modelViewMatrix, 45.0 * Math.PI / 180);
+    mat4.rotateY(modelViewMatrix,modelViewMatrix, 60.0 * Math.PI / 180);
+    var s = vec3.create();
+    vec3.set(s,0.25,0.25,2.0);
+    mat4.scale(modelViewMatrix,modelViewMatrix,s)
+    setProgramMatrices(program,modelViewMatrix);
+    this.leftArm.draw(renderingMode);
+    modelViewMatrix = myMatrixStack.pop();
+
+    myMatrixStack.push(mat4.clone(modelViewMatrix));
+    var tv = vec3.create();
+    vec3.set(tv, -1.8, 1.5, -1.5);
+    mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+    mat4.rotateX(modelViewMatrix,modelViewMatrix, -45.0 * Math.PI / 180);
+    mat4.rotateY(modelViewMatrix,modelViewMatrix, 60.0 * Math.PI / 180);
+    var s = vec3.create();
+    vec3.set(s,0.25,0.25,2.0);
+    mat4.scale(modelViewMatrix,modelViewMatrix,s)
+    setProgramMatrices(program,modelViewMatrix);
+    this.rightArm.draw(renderingMode);
+    modelViewMatrix = myMatrixStack.pop();
+
+    myMatrixStack.push(mat4.clone(modelViewMatrix));
+    var tv = vec3.create();
+    vec3.set(tv, 1, -1.0, 0.0);
+    mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+    mat4.rotateX(modelViewMatrix,modelViewMatrix, 60.0 * Math.PI / 180);
+    mat4.rotateY(modelViewMatrix,modelViewMatrix, 40.0 * Math.PI / 180);
+    var s = vec3.create();
+    vec3.set(s,0.25,0.25,2.0);
+    mat4.scale(modelViewMatrix,modelViewMatrix,s)
+    setProgramMatrices(program,modelViewMatrix);
+    this.leftLeg.draw(renderingMode);
+    modelViewMatrix = myMatrixStack.pop();
+
+    myMatrixStack.push(mat4.clone(modelViewMatrix));
+    var tv = vec3.create();
+    vec3.set(tv, -1.9, -2.6, -1.0);
+    mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+    mat4.rotateX(modelViewMatrix,modelViewMatrix, -60.0 * Math.PI / 180);
+    mat4.rotateY(modelViewMatrix,modelViewMatrix, 60.0 * Math.PI / 180);
+    var s = vec3.create();
+    vec3.set(s,0.25,0.25,2.0);
+    mat4.scale(modelViewMatrix,modelViewMatrix,s)
+    setProgramMatrices(program,modelViewMatrix);
+    this.rightLeg.draw(renderingMode);
+    modelViewMatrix = myMatrixStack.pop();
+
+    myMatrixStack.push(mat4.clone(modelViewMatrix));
+    var tv = vec3.create();
+    vec3.set(tv, -4.3, 3, -2.0);
+    mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+    mat4.rotateX(modelViewMatrix,modelViewMatrix, 60.0 * Math.PI / 180);
+    mat4.rotateY(modelViewMatrix,modelViewMatrix, 60.0 * Math.PI / 180);
+    var s = vec3.create();
+    vec3.set(s,0.25,0.25,2.0);
+    mat4.scale(modelViewMatrix,modelViewMatrix,s)
+    setProgramMatrices(program,modelViewMatrix);
+    this.rightForeArm.draw(renderingMode);
+    modelViewMatrix = myMatrixStack.pop();
+
+    myMatrixStack.push(mat4.clone(modelViewMatrix));
+    var tv = vec3.create();
+    vec3.set(tv, 3.3, 2, 1);
+    mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+    mat4.rotateX(modelViewMatrix,modelViewMatrix, 60.0 * Math.PI / 180);
+    mat4.rotateY(modelViewMatrix,modelViewMatrix, 25.0 * Math.PI / 180);
+    var s = vec3.create();
+    vec3.set(s,0.25,0.25,2.0);
+    mat4.scale(modelViewMatrix,modelViewMatrix,s)
+    setProgramMatrices(program,modelViewMatrix);
+    this.leftForeArm.draw(renderingMode);
+    modelViewMatrix = myMatrixStack.pop();
+
+    myMatrixStack.push(mat4.clone(modelViewMatrix));
+    var tv = vec3.create();
+    vec3.set(tv, -2, -2, -1);
+    mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+    mat4.rotateX(modelViewMatrix,modelViewMatrix, 60.0 * Math.PI / 180);
+    mat4.rotateY(modelViewMatrix,modelViewMatrix, 25.0 * Math.PI / 180);
+    var s = vec3.create();
+    vec3.set(s,0.25,0.25,2.0);
+    mat4.scale(modelViewMatrix,modelViewMatrix,s)
+    setProgramMatrices(program,modelViewMatrix);
+    this.rightForeLeg.draw(renderingMode);
+    modelViewMatrix = myMatrixStack.pop();
+
+    myMatrixStack.push(mat4.clone(modelViewMatrix));
+    var tv = vec3.create();
+    vec3.set(tv, 2.5, -2.7, 1.2);
+    mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+    mat4.rotateX(modelViewMatrix,modelViewMatrix, 90.0 * Math.PI / 180);
+    mat4.rotateY(modelViewMatrix,modelViewMatrix, 60.0 * Math.PI / 180);
+    var s = vec3.create();
+    vec3.set(s,0.25,0.25,2.0);
+    mat4.scale(modelViewMatrix,modelViewMatrix,s)
+    setProgramMatrices(program,modelViewMatrix);
+    this.leftForeLeg.draw(renderingMode);
+    modelViewMatrix = myMatrixStack.pop();
+
+    return modelViewMatrix;
+
+  }
+
+  draw(modelViewMatrix){
+    myMatrixStack.push(mat4.clone(modelViewMatrix));
+    modelViewMatrix = this.drawBody(modelViewMatrix);
+    modelViewMatrix = myMatrixStack.pop(); 
+    return modelViewMatrix;
+  }
+}
+
+class Thing{
 
   constructor(program,gl,hipRotVec,headRotVec){
     this.program = program;
@@ -791,7 +1186,7 @@ class Mouse{
   drawHead(modelViewMatrix){
     myMatrixStack.push(mat4.clone(modelViewMatrix));  
       var tv = vec3.create();
-      vec3.set(tv, 0.0, 1.0, 1.5);
+      vec3.set(tv, 0.0, 1.0, 3);
       mat4.translate(modelViewMatrix,modelViewMatrix,tv);
       mat4.rotateX(modelViewMatrix,modelViewMatrix, this._headRotationVector[0] * Math.PI / 180);
       mat4.rotateY(modelViewMatrix,modelViewMatrix, this._headRotationVector[1] * Math.PI / 180);
@@ -938,245 +1333,7 @@ class Mouse{
   drawRightBackLeg(modelViewMatrix){
     myMatrixStack.push(mat4.clone(modelViewMatrix));  
       var tv = vec3.create();
-      vec3.set(tv, -2.0, 0.0, 0.0);
-      mat4.translate(modelViewMatrix,modelViewMatrix,tv);
-      var s = vec3.create();
-      vec3.set(s,1.1,1.1,1.1);
-      mat4.scale(modelViewMatrix,modelViewMatrix,s)
-      setProgramMatrices(this.program,modelViewMatrix);
-      modelViewMatrix = this.drawLeg(modelViewMatrix);
-    modelViewMatrix = myMatrixStack.pop(); 
-
-    return modelViewMatrix;
-
-  }
-  
-  drawLeftBackLeg(modelViewMatrix){
-    myMatrixStack.push(mat4.clone(modelViewMatrix));  
-      var tv = vec3.create();
-      vec3.set(tv, 2.0, 0.0, 0.0);
-      mat4.translate(modelViewMatrix,modelViewMatrix,tv);
-      var s = vec3.create();
-      vec3.set(s,1.1,1.1,1.1);
-      mat4.scale(modelViewMatrix,modelViewMatrix,s)
-      setProgramMatrices(this.program,modelViewMatrix);
-      modelViewMatrix = this.drawLeg(modelViewMatrix);
-    modelViewMatrix = myMatrixStack.pop(); 
-
-    return modelViewMatrix;
-  }
-
-  drawRightFrontLeg(modelViewMatrix){
-    myMatrixStack.push(mat4.clone(modelViewMatrix));  
-      var tv = vec3.create();
-      vec3.set(tv, -2.0, -0.25, 0.0);
-      mat4.translate(modelViewMatrix,modelViewMatrix,tv);
-      setProgramMatrices(this.program,modelViewMatrix);
-      modelViewMatrix = this.drawLeg(modelViewMatrix);
-    modelViewMatrix = myMatrixStack.pop(); 
-    return modelViewMatrix;
-    
-  }
-  
-  drawLeftFrontLeg(modelViewMatrix){
-    myMatrixStack.push(mat4.clone(modelViewMatrix));  
-      var tv = vec3.create();
-      vec3.set(tv, 2.0, -0.25, 0.0);
-      mat4.translate(modelViewMatrix,modelViewMatrix,tv);
-      setProgramMatrices(this.program,modelViewMatrix);
-      modelViewMatrix = this.drawLeg(modelViewMatrix);
-    modelViewMatrix = myMatrixStack.pop(); 
-    return modelViewMatrix;
-  }
-
-
-  draw(modelViewMatrix){
-    myMatrixStack.push(mat4.clone(modelViewMatrix));
-      mat4.rotateX(modelViewMatrix,modelViewMatrix, this._hipRotationVector[0] * Math.PI / 180);
-      mat4.rotateY(modelViewMatrix,modelViewMatrix, this._hipRotationVector[1] * Math.PI / 180);
-      mat4.rotateZ(modelViewMatrix,modelViewMatrix, this._hipRotationVector[2] * Math.PI / 180);
-      modelViewMatrix = this.drawBody(modelViewMatrix);
-    modelViewMatrix = myMatrixStack.pop(); 
-    modelViewMatrix = this.drawRightBackLeg(modelViewMatrix);
-    modelViewMatrix = this.drawLeftBackLeg(modelViewMatrix);
-    return modelViewMatrix;
-  }
-
-}
-
-class Thing{
-
-  constructor(program,gl,hipRotVec,headRotVec){
-    this.program = program;
-    this.gl = gl;
-    this.cube = new MyCube(this.program,this.gl,undefined,"miojo.jpg");
-    this.sphere = new MySphere(this.program,this.gl,1.0,64,64, new Color(1.0,0.0,0.0),"miojo.png");
-    this.cylinder = new MyCylinder(this.program,this.gl,2.0,4.0,32,32,new Color(0.8,0.4,0.0),"miojo.png");
-    this.sphere2 = new MySphere(this.program,this.gl,1.0,32,32,new Color(0.0,0.0,0.5),"miojo.png");
-    this._hipRotationVector = hipRotVec;
-    this._headRotationVector = headRotVec;
-  }
-
-  get hipRotationVector(){return this._hipRotationVector;}
-
-  set hipRotationVector(hipRotVec){this._hipRotationVector = hipRotVec;}
-
-  get headRotationVector(){return this._headRotationVector;}
-
-  set headRotationVector(hipRotVec){this._headRotationVector = hipRotVec;}
-
-
-  drawHead(modelViewMatrix){
-    myMatrixStack.push(mat4.clone(modelViewMatrix));  
-      var tv = vec3.create();
-      vec3.set(tv, 0.0, 1.0, 1.5);
-      mat4.translate(modelViewMatrix,modelViewMatrix,tv);
-      mat4.rotateX(modelViewMatrix,modelViewMatrix, this._headRotationVector[0] * Math.PI / 180);
-      mat4.rotateY(modelViewMatrix,modelViewMatrix, this._headRotationVector[1] * Math.PI / 180);
-      mat4.rotateZ(modelViewMatrix,modelViewMatrix, this._headRotationVector[2] * Math.PI / 180);
-
-      //Empilhar a matriz corrente
-      myMatrixStack.push(mat4.clone(modelViewMatrix));
-        //Transforma localmente o primeiro cubo.  
-        var tv = vec3.create();
-        vec3.set(tv, -1.5, 2.0, 0.0);
-        mat4.translate(modelViewMatrix,modelViewMatrix,tv);
-        mat4.rotateY(modelViewMatrix,modelViewMatrix, 45.0 * Math.PI / 180);
-        var s = vec3.create();
-        vec3.set(s,0.5,0.7,0.1);
-        mat4.scale(modelViewMatrix,modelViewMatrix,s)
-        setProgramMatrices(this.program,modelViewMatrix);
-        this.cylinder.draw(renderingMode);
-      modelViewMatrix = myMatrixStack.pop();
-
-      myMatrixStack.push(mat4.clone(modelViewMatrix));  
-        var tv = vec3.create();
-        vec3.set(tv, 1.5, 2.0, 0.0);
-        mat4.translate(modelViewMatrix,modelViewMatrix,tv);
-        mat4.rotateY(modelViewMatrix,modelViewMatrix, -45.0 * Math.PI / 180);
-        var s = vec3.create();
-        vec3.set(s,0.5,0.7,0.1);
-        mat4.scale(modelViewMatrix,modelViewMatrix,s)
-        setProgramMatrices(this.program,modelViewMatrix);
-        this.cylinder.draw(renderingMode);
-      modelViewMatrix = myMatrixStack.pop();
-      
-      
-      myMatrixStack.push(mat4.clone(modelViewMatrix));  
-      setProgramMatrices(this.program,modelViewMatrix);
-        this.cube.draw(renderingMode);
-      modelViewMatrix = myMatrixStack.pop();     
-    
-
-      myMatrixStack.push(mat4.clone(modelViewMatrix));  
-        var tv = vec3.create();
-        vec3.set(tv, 0.0, 0.0, 1.0);
-        mat4.translate(modelViewMatrix,modelViewMatrix,tv);
-        setProgramMatrices(this.program,modelViewMatrix);
-        this.sphere2.draw(renderingMode);
-      modelViewMatrix = myMatrixStack.pop();
-
-    modelViewMatrix = myMatrixStack.pop();
-    
-    return modelViewMatrix;
-    
-  }
-
-  drawBody(modelViewMatrix){
-    myMatrixStack.push(mat4.clone(modelViewMatrix));  
-      var tv = vec3.create();
-      //vec3.set(tv, 0.0, 0.0, 0.0);
-      //mat4.translate(modelViewMatrix,modelViewMatrix,tv);
-      var s = vec3.create();
-      vec3.set(s,2.0,2.0,2.0);
-      mat4.scale(modelViewMatrix,modelViewMatrix,s)
-      setProgramMatrices(this.program,modelViewMatrix);
-      this.sphere.draw(renderingMode);
-    modelViewMatrix = myMatrixStack.pop(); 
-
-    myMatrixStack.push(mat4.clone(modelViewMatrix));  
-      //var tv = vec3.create();
-      //vec3.set(tv, 0.0, 0.0, 0.0);
-      //mat4.translate(modelViewMatrix,modelViewMatrix,tv);
-      setProgramMatrices(this.program,modelViewMatrix);
-      this.cylinder.draw(renderingMode);
-    modelViewMatrix = myMatrixStack.pop(); 
-
-
-    var tv = vec3.create();
-    vec3.set(tv, 0.0, 0.0, 4.0);
-    mat4.translate(modelViewMatrix,modelViewMatrix,tv);
-    myMatrixStack.push(mat4.clone(modelViewMatrix));  
-      var s = vec3.create();
-      vec3.set(s,2.0,2.0,2.0);
-      mat4.scale(modelViewMatrix,modelViewMatrix,s)
-      setProgramMatrices(this.program,modelViewMatrix);
-      this.sphere.draw(renderingMode);
-    modelViewMatrix = myMatrixStack.pop(); 
-
-    modelViewMatrix = this.drawRightFrontLeg(modelViewMatrix);
-    modelViewMatrix = this.drawLeftFrontLeg(modelViewMatrix);
-
-    myMatrixStack.push(mat4.clone(modelViewMatrix));  
-      var tv = vec3.create();
-      vec3.set(tv, 0.0, 0.0, 0.25);
-      mat4.translate(modelViewMatrix,modelViewMatrix,tv);
-      this.drawHead(modelViewMatrix);
-    modelViewMatrix = myMatrixStack.pop(); 
-    
-
-    return modelViewMatrix;
-
-  }
-
-  drawLeg(modelViewMatrix){
-    myMatrixStack.push(mat4.clone(modelViewMatrix));  
-      var tv = vec3.create();
-      vec3.set(tv, 0.0, 0.0, 0.0);
-      mat4.translate(modelViewMatrix,modelViewMatrix,tv);
-      myMatrixStack.push(mat4.clone(modelViewMatrix));
-        var s = vec3.create();
-        vec3.set(s,0.5,1.5,1.0);
-        mat4.scale(modelViewMatrix,modelViewMatrix,s)
-        gl.uniformMatrix4fv(program.uModelViewMatrix, false, modelViewMatrix);
-        this.sphere.draw(renderingMode);
-      modelViewMatrix = myMatrixStack.pop(); 
-      
-      /*draw foreleg*/
-      
-      vec3.set(tv, 0.0,-1.0, 0.0);
-      mat4.translate(modelViewMatrix,modelViewMatrix,tv);
-      mat4.rotateX(modelViewMatrix,modelViewMatrix, 45.0 * Math.PI / 180);
-      myMatrixStack.push(mat4.clone(modelViewMatrix));
-        var s = vec3.create();
-        vec3.set(s,0.25,0.25,0.5);
-        mat4.scale(modelViewMatrix,modelViewMatrix,s)
-        gl.uniformMatrix4fv(program.uModelViewMatrix, false, modelViewMatrix);
-        this.cylinder.draw(renderingMode);
-      modelViewMatrix = myMatrixStack.pop();
-
-      /*draw paw*/
-
-      vec3.set(tv, 0.0,0.0,2.5);
-      mat4.translate(modelViewMatrix,modelViewMatrix,tv);
-      mat4.rotateX(modelViewMatrix,modelViewMatrix, -45.0 * Math.PI / 180);
-      var s = vec3.create();
-      vec3.set(s,0.5,0.5,0.5);
-      mat4.scale(modelViewMatrix,modelViewMatrix,s)
-      gl.uniformMatrix4fv(program.uModelViewMatrix, false, modelViewMatrix);
-      this.cube.draw(renderingMode);
-
-    modelViewMatrix = myMatrixStack.pop();  
-
-    return modelViewMatrix;
-
-
-  }
-
-  drawRightBackLeg(modelViewMatrix){
-    myMatrixStack.push(mat4.clone(modelViewMatrix));  
-      var tv = vec3.create();
-      vec3.set(tv, -2.0, 0.0, 0.0);
+      vec3.set(tv, 2.0, 4.0, 0.0);
       mat4.translate(modelViewMatrix,modelViewMatrix,tv);
       var s = vec3.create();
       vec3.set(s,1.1,1.1,1.1);

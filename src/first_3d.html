@@ -245,8 +245,8 @@ sob a licença acima especificada.
         texturedSphere,
         cylinder,
         texturedCylinder,
-        mouse,
-        thing;
+        thing,
+        noodlesBoy;
 
     //Função que constroi um shader (Vertex ou Fragment shader)
     function getShader(id) {
@@ -415,12 +415,11 @@ sob a licença acima especificada.
     function render() {
         setCameraMatrices();
 
-        modelViewMatrix = drawGround(modelViewMatrix);
-        modelViewMatrix = drawMarble(modelViewMatrix);
+        //modelViewMatrix = drawGround(modelViewMatrix);
+        //modelViewMatrix = drawMarble(modelViewMatrix);
     
-        modelViewMatrix = mouse.draw(modelViewMatrix);
-        modelViewMatrix = thing.draw(modelViewMatrix);
-
+        //modelViewMatrix = thing.draw(modelViewMatrix);
+        modelViewMatrix = noodlesBoy.draw(modelViewMatrix);
     }
 
 
@@ -441,14 +440,15 @@ sob a licença acima especificada.
       initProgram();
 
       myMatrixStack = new MyStack();
-      texturedCube = new MyCube(program,gl,undefined,"miojo.jpg");
-      texturedCube2 = new MyCube(program,gl,undefined,"miojo.jpg");
+      texturedCube = new MyCube(program,gl,undefined,"madeira.jpg");
+      texturedCube2 = new MyCube(program,gl,undefined,"madeira.jpg");
       texturedSphere = new MySphere(program,gl,1.0,32,32, new Color(1.0,0.0,0.0),"miojo.jpg");
       texturedCylinder = new MyCylinder(program,gl,2.0,4.0,16,16,new Color(0.8,0.4,0.0),"miojo.jpg");
       
-      mouse = new Mouse(program,gl,hipRotationVector,headRotationVector);
 
-      thing = new Mouse(program,gl,hipRotationVector,headRotationVector);
+      thing = new Thing(program,gl,hipRotationVector,headRotationVector);
+
+      noodlesBoy = new NoodlesBoy(program, gl);
 
       //
       var tv = vec3.create();
@@ -580,7 +580,6 @@ sob a licença acima especificada.
                 state['Rotate Hip Y'],
                 state['Rotate Hip Z']
               ];
-              mouse.hipRotationVector = hipRotationVector;
               thing.hipRotationVector = hipRotationVector;
               render();  
 
@@ -599,7 +598,6 @@ sob a licença acima especificada.
                 state['Rotate Head Y'],
                 state['Rotate Head Z']
               ];
-              mouse.headRotationVector = headRotationVector;
               thing.headRotationVector = headRotationVector;
               render();  
 
