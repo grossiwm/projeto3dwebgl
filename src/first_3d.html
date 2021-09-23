@@ -245,7 +245,6 @@ sob a licença acima especificada.
         texturedSphere,
         cylinder,
         texturedCylinder,
-        thing,
         noodlesBoy;
 
     //Função que constroi um shader (Vertex ou Fragment shader)
@@ -404,9 +403,6 @@ sob a licença acima especificada.
         mat4.rotateY(modelViewMatrix,modelViewMatrix,rotationVector[1]* Math.PI / 180);
         mat4.rotateZ(modelViewMatrix,modelViewMatrix,rotationVector[2]* Math.PI / 180);
 
-        //Evia a matriz projeção para o shader
-        //gl.uniformMatrix4fv(program.uModelViewMatrix, false, modelViewMatrix);
-        //gl.uniformMatrix4fv(program.uNormalMatrix, false, normalMatrix); 
         gl.uniformMatrix4fv(program.uProjectionMatrix, false, projectionMatrix);
         gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -415,10 +411,8 @@ sob a licença acima especificada.
     function render() {
         setCameraMatrices();
 
-        //modelViewMatrix = drawGround(modelViewMatrix);
-        //modelViewMatrix = drawMarble(modelViewMatrix);
+        modelViewMatrix = drawGround(modelViewMatrix);
     
-        //modelViewMatrix = thing.draw(modelViewMatrix);
         modelViewMatrix = noodlesBoy.draw(modelViewMatrix);
     }
 
@@ -440,13 +434,11 @@ sob a licença acima especificada.
       initProgram();
 
       myMatrixStack = new MyStack();
-      texturedCube = new MyCube(program,gl,undefined,"madeira.jpg");
-      texturedCube2 = new MyCube(program,gl,undefined,"madeira.jpg");
+      texturedCube = new MyCube(program,gl,undefined,"asfalto.jpg");
+      texturedCube2 = new MyCube(program,gl,undefined,"mato.jpg");
       texturedSphere = new MySphere(program,gl,1.0,32,32, new Color(1.0,0.0,0.0),"miojo.jpg");
       texturedCylinder = new MyCylinder(program,gl,2.0,4.0,16,16,new Color(0.8,0.4,0.0),"miojo.jpg");
-      
-
-      thing = new Thing(program,gl,hipRotationVector,headRotationVector);
+  
 
       noodlesBoy = new NoodlesBoy(program, gl);
 
@@ -580,7 +572,6 @@ sob a licença acima especificada.
                 state['Rotate Hip Y'],
                 state['Rotate Hip Z']
               ];
-              thing.hipRotationVector = hipRotationVector;
               render();  
 
             }
@@ -598,7 +589,6 @@ sob a licença acima especificada.
                 state['Rotate Head Y'],
                 state['Rotate Head Z']
               ];
-              thing.headRotationVector = headRotationVector;
               render();  
 
             }
